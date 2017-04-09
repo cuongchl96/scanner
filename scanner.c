@@ -91,7 +91,7 @@ Token* getToken(void){
                         token = makeToken(SB_LSEL, ln, cn);
                         readChar();
                         return token;
-                    case CHAR_TIMES: state = 3; break;
+                    case CHAR_TIMES: state = 3; readChar(); break;
                     default:
                         token = makeToken(SB_LPAR, ln, cn);
                         return token;
@@ -106,6 +106,7 @@ Token* getToken(void){
                     }
                     state = 3; readChar();
                 }
+
                 state = 4;
                 readChar();
                 break;
@@ -336,7 +337,7 @@ void printToken(Token *token) {
   }
 }
 
-#define file_name "comment.inp"
+#define file_name "comment2.inp"
 
 int main(){
     openInputStream(file_name);

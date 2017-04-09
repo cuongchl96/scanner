@@ -177,6 +177,8 @@ Token* getToken(void){
                     error(ERR_INVALID_IDENT,token->lineNo,token->colNo);
                     while(charCodes[currentChar] == CHAR_LETTER)
                         readChar();
+                    state = 0;
+                    break;
                 }
                 if (count > MAX_NUMBER_LEN){
                     error(ERR_NUMBER_TOO_BIG, token->lineNo, token->colNo);

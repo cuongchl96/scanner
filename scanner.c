@@ -26,7 +26,7 @@ Token* getToken(void){
             case 0:
                 switch(charCodes[currentChar]){
                     case CHAR_SPACE: state = 1; break;
-                    case CHAR_LPAR: state = 2; readChar(); break;
+                    case CHAR_LPAR: state = 2; break;
                     case CHAR_LETTER: state = 8; break;
                     case CHAR_DIGIT: state = 10; break;
                     case CHAR_PLUS:
@@ -86,6 +86,7 @@ Token* getToken(void){
             case 2:
                 ln = lineNo;
                 cn = colNo;
+                readChar();
                 switch(charCodes[currentChar]){
                     case CHAR_PERIOD:
                         token = makeToken(SB_LSEL, ln, cn);

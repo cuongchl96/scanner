@@ -233,7 +233,11 @@ Token* getToken(void){
                     error(ERR_INVALID_CONSTANT_CHAR, token->lineNo, token->colNo);
                 }
                 if (currentChar <= 31)
+                {
                     error(ERR_NONPRINTABLE_CHAR,lineNo,colNo);
+                    state = 0;
+                    readChar();
+                }
                 token->string[0] = currentChar;
                 token->string[1] = '\0';
 
@@ -270,6 +274,8 @@ Token* getToken(void){
                 break;
             default:
                 error(ERR_INVALID_SYMBOL, lineNo, colNo);
+                state = 0;
+                readChar();
         }
     }
 }
@@ -337,7 +343,7 @@ void printToken(Token *token) {
   }
 }
 
-#define file_name "comment2.inp"
+#define file_name "A.inp"
 
 int main(){
     openInputStream(file_name);
